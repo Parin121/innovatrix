@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Last of Tacos</title>
+    <title>The Last of Tacos: Season 2</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="game-container">
         <div class="header">
-            <h1>The Last of Tacos</h1>
+            <h1>The Last of Tacos: Season 2</h1>
             <div class="score-container">
                 <div>Score: <span id="score">0</span></div>
                 <div>Tacos Saved: <span id="tacos-saved">0</span></div>
                 <div>Health: <span id="health">100</span></div>
+            </div>
+            <div class="faction-meter">
+                <div class="faction-label">FEDRA</div>
+                <div class="meter-container">
+                    <div id="faction-meter" class="meter"></div>
+                </div>
+                <div class="faction-label">Fireflies</div>
             </div>
         </div>
 
@@ -24,11 +31,56 @@
 
         <div class="controls">
             <div class="control-info">Use arrow keys to move, spacebar to attack</div>
+            <div class="character-select">
+                <button id="ellie-select" class="character-btn active">Ellie</button>
+                <button id="abby-select" class="character-btn">Abby</button>
+            </div>
             <button id="start-button">Start Game</button>
             <button id="restart-button" style="display: none;">Restart Game</button>
         </div>
 
         <div id="game-message" class="game-message"></div>
+
+        <div class="game-instructions">
+            <h2>How To Play</h2>
+            <div class="instructions-content">
+                <div class="instruction-column">
+                    <h3>Controls</h3>
+                    <ul>
+                        <li><strong>Left/Right Arrows:</strong> Move your character</li>
+                        <li><strong>Spacebar:</strong> Attack infected enemies</li>
+                    </ul>
+
+                    <h3>Characters</h3>
+                    <ul>
+                        <li><strong>Ellie:</strong> Faster movement, quicker attacks</li>
+                        <li><strong>Abby:</strong> Stronger attacks, more health</li>
+                    </ul>
+                </div>
+                <div class="instruction-column">
+                    <h3>Objectives</h3>
+                    <ul>
+                        <li>Collect falling tacos to increase your score</li>
+                        <li>Regular tacos heal 5 health points</li>
+                        <li>Special tacos (glowing) heal 15 health points</li>
+                        <li>Find collectibles for bonus points</li>
+                        <li>Avoid infected enemies or destroy them</li>
+                    </ul>
+                </div>
+                <div class="instruction-column">
+                    <h3>Enemies</h3>
+                    <ul>
+                        <li><strong>Runners:</strong> Fast but weak</li>
+                        <li><strong>Clickers:</strong> Moderate speed and strength</li>
+                        <li><strong>Bloaters:</strong> Slow but tough</li>
+                        <li><strong>Rat King:</strong> Extremely dangerous boss</li>
+                    </ul>
+
+                    <h3>Factions</h3>
+                    <p>Your actions affect your standing with FEDRA and the Fireflies, changing your game ending!</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="js/game.js"></script>

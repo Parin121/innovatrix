@@ -6,12 +6,13 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #1a1a1a;
+    background-color: #0f1419;
     color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-image: radial-gradient(circle at center, #1a2530 0%, #0a0d10 100%);
 }
 
 .game-container {
@@ -27,36 +28,86 @@ body {
 
 .header h1 {
     font-size: 36px;
-    color: #ff6b35;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #4fc4cf;
+    text-shadow: 2px 2px 8px rgba(79, 196, 207, 0.5);
     margin-bottom: 15px;
+    letter-spacing: 2px;
 }
 
 .score-container {
     display: flex;
     justify-content: space-around;
     font-size: 18px;
-    background-color: #333;
+    background-color: #1a2530;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+
+.faction-meter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px auto;
+    width: 80%;
+}
+
+.faction-label {
+    font-size: 14px;
+    color: #ccc;
+    width: 80px;
+}
+
+.meter-container {
+    flex-grow: 1;
+    height: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 10px;
+}
+
+.meter {
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(to right, #ce3a3e 0%, #3a75ce 100%);
+    transition: width 0.5s ease;
 }
 
 .game-area {
     position: relative;
     width: 100%;
     height: 500px;
-    background-color: #2a2a2a;
     border: 3px solid #444;
     overflow: hidden;
     background-color: #1a1a1a;
     background-image:
-        radial-gradient(circle at 10% 20%, rgba(50, 50, 50, 0.3) 10px, transparent 10px),
-        radial-gradient(circle at 30% 65%, rgba(50, 50, 50, 0.3) 5px, transparent 5px),
-        radial-gradient(circle at 55% 15%, rgba(50, 50, 50, 0.3) 8px, transparent 8px),
-        radial-gradient(circle at 77% 39%, rgba(50, 50, 50, 0.3) 12px, transparent 12px),
-        radial-gradient(circle at 92% 72%, rgba(50, 50, 50, 0.3) 7px, transparent 7px);
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('../images/background.png');
     background-size: cover;
+    background-position: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Season 2 locations that will rotate */
+.game-area.jackson {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('../images/background.png');
+}
+
+.game-area.seattle {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../images/background.png');
+    filter: sepia(20%) saturate(80%);
+}
+
+.game-area.santa-barbara {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../images/background.png');
+    filter: brightness(110%) contrast(90%);
 }
 
 .player {
@@ -82,6 +133,20 @@ body {
     align-items: center;
 }
 
+.enemy.clicker {
+    filter: hue-rotate(30deg) brightness(0.8);
+}
+
+.enemy.bloater {
+    transform: scale(1.5);
+    filter: hue-rotate(60deg) brightness(0.7);
+}
+
+.enemy.rat-king {
+    transform: scale(2);
+    filter: hue-rotate(90deg) brightness(0.6);
+}
+
 .taco {
     position: absolute;
     width: 30px;
@@ -92,11 +157,21 @@ body {
     align-items: center;
 }
 
+.taco.special {
+    filter: drop-shadow(0 0 5px gold);
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
 .weapon {
     position: absolute;
     width: 20px;
     height: 5px;
-    background-color: #ff6b35;
+    background-color: #4fc4cf;
     border-radius: 2px;
     z-index: 8;
 }
@@ -111,32 +186,128 @@ body {
     color: #ccc;
 }
 
+.character-select {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.character-btn {
+    padding: 8px 15px;
+    margin: 0 5px;
+    background-color: #333;
+    color: #ccc;
+    border: 1px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.character-btn.active {
+    background-color: #4fc4cf;
+    color: #121212;
+    border-color: #4fc4cf;
+}
+
 button {
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #ff6b35;
-    color: white;
+    background-color: #4fc4cf;
+    color: #121212;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 5px;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
 }
 
 button:hover {
-    background-color: #e84c10;
+    background-color: #3ca7b1;
+    transform: translateY(-2px);
 }
 
 .game-message {
     margin-top: 15px;
     font-size: 24px;
     font-weight: bold;
-    color: #ff6b35;
+    color: #4fc4cf;
     min-height: 30px;
 }
 
 .game-over {
     color: #ff3333;
+}
+
+/* Collectibles display */
+.collectibles {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.collectible {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    opacity: 0.3;
+}
+
+.collectible.found {
+    opacity: 1;
+    filter: drop-shadow(0 0 3px #4fc4cf);
+}
+
+/* Game Instructions */
+.game-instructions {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(26, 37, 48, 0.8);
+    border-radius: 10px;
+    border: 1px solid #444;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.game-instructions h2 {
+    color: #4fc4cf;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    border-bottom: 1px solid #4fc4cf;
+    padding-bottom: 10px;
+}
+
+.instructions-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.instruction-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.instruction-column h3 {
+    color: #4fc4cf;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.instruction-column ul {
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.instruction-column li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.instruction-column p {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.4;
 }
 
 @media (max-width: 600px) {
@@ -150,5 +321,13 @@ button:hover {
 
     .score-container {
         font-size: 14px;
+    }
+
+    .instructions-content {
+        flex-direction: column;
+    }
+
+    .instruction-column {
+        margin-bottom: 20px;
     }
 }
