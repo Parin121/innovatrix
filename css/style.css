@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-container {
+    width: 800px;
+    max-width: 95%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 36px;
+    color: #ff6b35;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 15px;
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.game-area {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-color: #2a2a2a;
+    border: 3px solid #444;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(50, 50, 50, 0.3) 10px, transparent 10px),
+        radial-gradient(circle at 30% 65%, rgba(50, 50, 50, 0.3) 5px, transparent 5px),
+        radial-gradient(circle at 55% 15%, rgba(50, 50, 50, 0.3) 8px, transparent 8px),
+        radial-gradient(circle at 77% 39%, rgba(50, 50, 50, 0.3) 12px, transparent 12px),
+        radial-gradient(circle at 92% 72%, rgba(50, 50, 50, 0.3) 7px, transparent 7px);
+    background-size: cover;
+}
+
+.player {
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.enemy {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.taco {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weapon {
+    position: absolute;
+    width: 20px;
+    height: 5px;
+    background-color: #ff6b35;
+    border-radius: 2px;
+    z-index: 8;
+}
+
+.controls {
+    margin-top: 15px;
+}
+
+.control-info {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ff6b35;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #e84c10;
+}
+
+.game-message {
+    margin-top: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6b35;
+    min-height: 30px;
+}
+
+.game-over {
+    color: #ff3333;
+}
+
+@media (max-width: 600px) {
+    .game-area {
+        height: 400px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .score-container {
+        font-size: 14px;
+    }
+}

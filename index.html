@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last of Tacos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>The Last of Tacos</h1>
+            <div class="score-container">
+                <div>Score: <span id="score">0</span></div>
+                <div>Tacos Saved: <span id="tacos-saved">0</span></div>
+                <div>Health: <span id="health">100</span></div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div id="player" class="player"></div>
+            <!-- Enemies and tacos will be generated through JavaScript -->
+        </div>
+
+        <div class="controls">
+            <div class="control-info">Use arrow keys to move, spacebar to attack</div>
+            <button id="start-button">Start Game</button>
+            <button id="restart-button" style="display: none;">Restart Game</button>
+        </div>
+
+        <div id="game-message" class="game-message"></div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
